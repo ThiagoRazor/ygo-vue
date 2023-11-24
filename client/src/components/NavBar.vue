@@ -75,7 +75,7 @@
         const searchStore = useSearchStore();
         const router = useRouter();
         const searchTerm = searchStore.searchTerm;
-        const showSearchInput = ref(true);
+        const showSearchInput = ref(false);
         const showColapseInput = ref(true);
   
         const updateSearch = (event) => {
@@ -86,10 +86,8 @@
   
         const toggleSearchInput = () => {
           showSearchInput.value = !showSearchInput.value;
-  
-          if(!showSearchInput.value){
-            searchStore.resetSearchTerm()
-          }
+
+          
         }
   
         const showCollapse = () => {
@@ -107,7 +105,9 @@
 
         const handleResize = () => {
           showColapseInput.value = window.innerWidth >= 768
-          showSearchInput.value = window.innerWidth >= 768
+            if(window.innerWidth <= 768){
+              showSearchInput.value = false;
+            }
         }
 
         onMounted(() => {
