@@ -25,14 +25,14 @@
         	<button 
 			@click="prevPage" :disabled="currentPage === 1"
 			:class="{'bg-indigo-500': currentPage === 1}"
-			class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l"> 
+			class="bg-indigo-600 text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l"> 
         		Prev
         	</button>
         	&nbsp; &nbsp;
         	<button 
 			@click="nextPage" :disabled="currentPage === totalPages"
 			:class="{'bg-indigo-500': currentPage === totalPages}"
-			class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r"> 
+			class="bg-indigo-600 text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r"> 
                 Next
             </button>
         </div>
@@ -55,7 +55,7 @@ export default {
     const cards = ref([]);
     const searchTerm = ref(useSearchStore().searchTerm);
     const currentPage = ref(1);
-    const itemsPerPage = 50;
+    const itemsPerPage = 30;
     let unsubscribe;
 
     const cardList = query(collection(db, "cards"), orderBy("id"));
@@ -88,8 +88,10 @@ export default {
               if (typeof searchTerm.value === "string") {
                 const parsedId = parseInt(searchTerm.value, 10);
                 if (!isNaN(parsedId)) {
+                  currentPage.value = 1;
                   return card.id === parsedId;
                 } else {
+                  currentPage.value = 1;
                   return card.name.toLowerCase().includes(searchTerm.value.toLowerCase());
                 }
               } else {
@@ -103,6 +105,7 @@ export default {
           if (cards.value.length === 0) {
             router.push({ name: 'error' })
           }
+
 
           resolve();
         });
@@ -120,6 +123,9 @@ export default {
       if (currentPage.value > 1) {
         currentPage.value -= 1;
         updatePaginatedCards();
+        window.scrollTo({
+          top: 0
+        })
       }
     };
 
@@ -127,6 +133,9 @@ export default {
       if (currentPage.value < totalPages.value) {
         currentPage.value += 1;
         updatePaginatedCards();
+        window.scrollTo({
+          top: 0
+        })
       }
     };
 

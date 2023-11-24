@@ -85,8 +85,6 @@
   
         const toggleSearchInput = () => {
           showSearchInput.value = !showSearchInput.value;
-
-          console.log(showSearchInput.value);
         }
   
         const showCollapse = () => {
