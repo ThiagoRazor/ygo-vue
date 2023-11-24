@@ -5,7 +5,7 @@
                         <div class="w-full flex justify-start text-gray-600 mb-3">
                             <img class="icon icon-tabler icon-tabler-wallet" width="52" height="52"
                              src="../assets/0.jpg"
-                             alt="" />
+                             alt="Card" />
                         </div>
                         <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">Enter Card Details</h1>
                         <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Card Name</label>
@@ -52,9 +52,6 @@
                             <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Card DESCRIPTION</label>
                             <textarea v-model="cardDescription" rows="3" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"></textarea>
                         </div>
-                        <div class="relative mb-5 mt-2">
-                            <input type="file" ref="xlsxDoc" @change="docFileUpload" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" />
-                        </div>
                         <div class="flex items-center justify-start w-full">
                             <button @click="addNewCard" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Submit</button>
                             <button @click="closeModal" class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm">Cancel</button>
@@ -76,7 +73,6 @@
     import { db } from "../firebaseConfig"
     import { ref } from "vue";
     import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
-    import * as XLSX from "xlsx";
 
         const closeModalInput = ref(true);
         const cardName = ref('');
@@ -117,50 +113,11 @@
                 }
             };
 
-        const docFileUpload = async (event) => {
-            const file = event.target.files[0];
-            if (file){
-                const extension = file.name.split('.').pop().toLowerCase();
-
-                if (extension === 'xlsx') {
-                    await readExcelFile(file);
-                } else {
-                    console.error("Por favor, selecione um arquivo .xlsx");
-                }
-            }
-        }
-
-        const readExcelFile = async (file) => {
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: "array"});
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(sheet);
-
-                for (const item of jsonData) {
-                    await addDoc(collection(db, "cards"), {
-                        name: item.name,
-                        id: Number(item.id),
-                        atk: Number(item.atk),
-                        def: Number(item.def),
-                        password: Number(item.password),
-                        price: Number(item.price),
-                        description: item.description,
-                        img: "",
-                    })
-                }
-
-                console.log("Cartões adicionados do Excel")
-            }
-
-            reader.readAsArrayBuffer(file);
-        }
-
 
         const addNewCard = async () => {
               try {
+                const imgValue = typeof cardImg.value === 'string' ? cardImg.value: '';
+
                 const docRef = await addDoc(collection(db, 'cards'), {
                   name: cardName.value,
                   id: Number(cardId.value),
@@ -169,7 +126,7 @@
                   password: Number(cardPass.value),
                   price: Number(cardPrice.value),
                   description: cardDescription.value,
-                  img: cardImg.value || "", // Ensure that img is a string or an empty string
+                  img: imgValue.value || "", // Ensure that img is a string or an empty string
                 });
                 console.log("Card added with ID: ", docRef.id);
               } catch (error) {
