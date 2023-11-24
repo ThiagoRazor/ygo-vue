@@ -38,7 +38,7 @@
       <div class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-search">
         <div class="relative mt-3 md:flex">
           <input 
-          v-if="!showSearchInput"
+          v-if="showSearchInput"
           v-model="searchTerm" type="search" @keydown.enter="updateSearch"
           class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
           placeholder="Search by name...">
