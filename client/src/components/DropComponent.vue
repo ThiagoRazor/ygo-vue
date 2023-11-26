@@ -3,7 +3,7 @@
         <div class=" w-36 max-w-xs overflow-hidden rounded-lg">
               <div >
                 <img class="object-center object-cover" :src="`${card.img}`" :alt="`${card.card}`">
-                <p class="text-gray-100 text-center font-semibold">Rate: {{ card.rate.toFixed(2) }}%</p>
+                <p class="text-gray-800 dark:text-gray-100 text-center font-semibold">Rate: {{ card.rate.toFixed(2) }}%</p>
               </div>
         </div>
     </router-link>

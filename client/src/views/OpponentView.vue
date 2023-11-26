@@ -1,18 +1,18 @@
 <template>
-  <main class="bg-gray-800">
+  <main class="bg-white dark:bg-gray-800">
     <section class="text-gray-700 py-24  body-font overflow-hidden">
   <div class="container px-5 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <img class="object-center object-cover h-28 w-28" :src="`${duelistData.img}`" :alt="`${duelistData.name}`">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 class="text-sm title-font text-gray-100 tracking-widest">DUELIST NAME</h2>
-            <h1 class="text-white text-3xl title-font font-medium mb-1">{{ duelistData.name }}</h1>
+            <h2 class="text-sm title-font text-gray-800 dark:text-gray-100 tracking-widest">DUELIST NAME</h2>
+            <h1 class="text-gray-900 dark:text-white text-3xl title-font font-medium mb-1">{{ duelistData.name }}</h1>
         </div>
     </div>
   </div>
       <section>
         <div class="flex flex-col justify-start items-start m-auto p-auto">
-            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
+            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-900 dark:text-white">
               Duelist Deck
             </h1>
             <div class="w-[95%] flex justify-start px-12 items-center overflow-x-auto pb-10">
@@ -22,7 +22,7 @@
       </section>
       <section>
         <div class="flex flex-col justify-start items-start m-auto p-auto">
-            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
+            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-900 dark:text-white">
               SA-POW
             </h1>
             <div class="w-[95%] flex justify-start px-12 items-center overflow-x-auto pb-10">
@@ -32,7 +32,7 @@
       </section>
       <section>
         <div class="flex flex-col justify-start items-start m-auto p-auto">
-            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
+            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-900 dark:text-white">
               BCD-PT
             </h1>
             <div class="w-[95%] flex justify-start px-12 items-center overflow-x-auto pb-10">
@@ -42,7 +42,7 @@
       </section>
       <section>
         <div class="flex flex-col justify-start items-start m-auto p-auto">
-            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
+            <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-900 dark:text-white">
               SA-TEC
             </h1>
             <div class="w-[95%] flex justify-start px-12 items-center overflow-x-auto pb-10">

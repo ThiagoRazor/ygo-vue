@@ -1,21 +1,21 @@
 <template>
-    <footer>
+    <footer class="bg-gray-300 dark:bg-gray-800">
             <div class="max-w-screen-xl max-h-md  px-4 py-16 mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
                       <router-link to="/" class="flex items-center">
                           <img src="../assets/logo.png" class="h-12 mr-3" alt="Logo" />
                       </router-link>
-                      <p class="mt-8 text-md text-white">
+                      <p class="mt-8 text-md text-gray-900 dark:text-white">
                                 © 2023 ThiagoDev
                       </p>
                     </div>
                     <div>
                         <div>
-                              <p class="font-medium text-white">
+                              <p class="font-medium text-gray-900 dark:text-white">
                                 Socials:
                               </p>
-                              <div class="flex mt-2 space-x-6 text-gray-600">
+                              <div class="flex mt-2 space-x-6 text-gray-900 dark:text-gray-600">
                               <a href="https://www.instagram.com/thiago.razor/" class="hover:opacity-75 cursor-pointer"  target="_blank">
                                 <span class="sr-only"> Instagram </span>
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
