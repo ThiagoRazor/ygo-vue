@@ -27,7 +27,7 @@
             <h2 class="text-sm title-font pt-4 text-gray-800 dark:text-gray-100 tracking-widest">PRICE:</h2>
             <p class="flex items-center gap-1.5 font-sans text-lg font-normal leading-relaxed text-gray-800 dark:text-gray-100 antialiased">
             <img
-              src="../assets/star.png"
+              src="https://raw.githubusercontent.com/ThiagoRazor/ygo-vue/main/client/src/assets/star.png"
               class="h-6"
             />
             {{ cardData.price }}
