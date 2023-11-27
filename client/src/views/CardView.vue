@@ -3,7 +3,7 @@
     <section class="dark:text-gray-700 body-font overflow-hidden">
       <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-          <img :src="`${cardData.img}`" :alt="`${cardData.name}`" class="text-gray-900 dark:text-white lg:w-[400px] w-[400px] object-cover object-center rounded border  hover:shadow-lg border-gray-200">
+          <img :src="`${cardData.img}`" :alt="`${cardData.name}`" class="text-gray-900 dark:text-white h-[500px] object-cover object-center rounded border  hover:shadow-lg border-gray-200">
           <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 class="text-sm title-font text-gray-800 dark:text-gray-100 tracking-widest">CARD NAME</h2>
             <h1 class="text-gray-900 dark:text-white text-3xl title-font font-medium mb-1">{{cardData.name}}</h1>
@@ -36,6 +36,7 @@
             <p class="flex items-center gap-1.5 font-sans text-lg font-normal leading-relaxed text-gray-800 dark:text-gray-100 antialiased">
             {{ cardData.password }}
           </p>
+          <DuelistsBoard :id="cardData.id"/>
           </div>
         </div>
       </div>
@@ -47,11 +48,15 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import DuelistsBoard from "../components/DuelistsBoard.vue";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default {
+  components:{
+    DuelistsBoard
+  },
   data() {
     return {
       cardData: {
